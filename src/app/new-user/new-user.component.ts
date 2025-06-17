@@ -2,35 +2,43 @@ import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user/User';
 import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css']
+  styleUrls: ['./new-user.component.css'],
 })
 export class NewUserComponent {
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  roles: string[] = [];
 
- constructor( private userService: UserService,
-	      private router: Router
-    ) 
- {
- } 
+  constructor(
+    private userService: UserService,
+    private storageService: StorageService,
+    private router: Router
+  ) {}
 
- myPayloadUser = new User();
- myNewUser = new User();
+  callSignup() {
+    const newUser = {
+      username: this.username,
+      email: this.email,
+      password: this.password,
+      role: this.roles.length > 0 ? this.roles : undefined,
+    };
 
- createUser() {
-   console.log(this.myPayloadUser);
-
- this.myNewUser = this.userService.createUser(
-        this.myPayloadUser
-       );
- 
- console.log(this.myNewUser);
-
- if (this.myNewUser.id != 0)
+    this.userService.postSignup(newUser).subscribe(
+      (response) => {
+        console.log('User registered:', response);
+        alert('User registered successfully!');
         this.router.navigate(['/login']);
-
- } 
-
+      },
+      (error) => {
+        console.error('Signup error:', error);
+        alert('Error during registration');
+      }
+    );
+  }
 }

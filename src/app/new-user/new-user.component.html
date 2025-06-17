@@ -1,1 +1,23 @@
-<p>new-user works!</p>
+<table border="1">
+  <tr>
+    <td>Signup CRM-uv</td>
+    <td><a routerLink="/">cancel</a></td>
+  </tr>
+  <tr>
+    <td>Username</td>
+    <td><input type="text" [(ngModel)]="username" /></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input type="email" [(ngModel)]="email" /></td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td><input type="password" [(ngModel)]="password" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center;">
+      <button (click)="callSignup()">register</button>
+    </td>
+  </tr>
+</table>

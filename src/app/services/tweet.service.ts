@@ -10,7 +10,7 @@ import { StorageService } from '../services/storage.service';
   providedIn: 'root',
 })
 export class TweetService {
-  apiURL = 'http://localhost:8080/';
+  apiURL = 'https://twitterback-satm.onrender.com/';
   token = '';
   constructor(
     private http: HttpClient,

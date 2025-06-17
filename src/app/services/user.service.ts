@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserService {
-  apiURL = 'http://localhost:8080/';
+  apiURL = 'https://twitterback-satm.onrender.com/';
 
   constructor(private http: HttpClient) {}
 

@@ -11,7 +11,7 @@ import { ReactionCount } from '../models/Reaction/ReactionCount';
   providedIn: 'root',
 })
 export class ReactionService {
-  apiURL = 'http://localhost:8080/';
+  apiURL = 'https://twitterback-satm.onrender.com/';
   token = '';
 
   constructor(
@@ -80,7 +80,7 @@ export class ReactionService {
 
     return this.http.put(this.apiURL + 'api/reactions/toggle', reaction, {
       headers,
-      responseType: 'text', 
+      responseType: 'text',
     });
   }
 }

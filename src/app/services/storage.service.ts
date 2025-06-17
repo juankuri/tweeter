@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
-
-  constructor() { }
+  constructor() {}
   setSession(key: string, obj: any) {
-    sessionStorage.setItem(key, JSON.stringify(obj))
+    sessionStorage.setItem(key, JSON.stringify(obj));
   }
 
   getSession(key: string): any {
-  if (typeof window !== 'undefined' && sessionStorage) {
-    const obj = sessionStorage.getItem(key);
-    return obj ? JSON.parse(obj) : null;
+    if (typeof window !== 'undefined' && sessionStorage) {
+      const obj = sessionStorage.getItem(key);
+      return obj ? JSON.parse(obj) : null;
+    }
+    return null;
   }
-  return null;
-}
-
 
   sessionDeleteAll() {
     sessionStorage.clear();
@@ -43,7 +41,4 @@ export class StorageService {
   localDeleteByKey(key: string) {
     localStorage.removeItem(key);
   }
-
-
-
 }

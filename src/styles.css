@@ -1,25 +1,226 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+:root {
+  --color-bg: #15202b;
+  --color-card: #192734;
+  --color-primary: #1da1f2;
+  --color-secondary: #8899a6;
+  --color-border: #38444d;
+  --color-white: #ffffff;
+  --color-error: #f44336;
+  --color-warning: #ffc107;
+  --color-love: #e91e63;
+  --color-dislike: #9c27b0;
+}
 
 body {
-   background : #2E9ce6;
-   padding: 3em;
-   font-family: 'Raleway', 'Arial';
-   color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  margin: 0;
+  padding: 0;
 }
 
-ul {
-   list-style-type: none;
-   margin: 0 0 2em 0;
-   padding: 0;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--color-card);
+  min-height: 100vh;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
 }
 
-ul li {
-   display: inline;
-   margin-right: 30px;
+.welcome-header {
+  margin-bottom: 20px;
 }
 
-a {
-   color: #0f0;
-   text-decoration: none;
+.tweet-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tweet-form input[type="text"] {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: #243447;
+  color: var(--color-white);
+  font-size: 14px;
+}
+
+.tweet-form .btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tweet-form .btn:hover {
+  background-color: #1991db;
+}
+
+.tweet-card {
+  background-color: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.tweet-card:hover {
+  background-color: #1c2732;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tweet-user {
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 700;
+  display: block;
+}
+
+.tweet-text {
+  font-size: 15px;
+  margin: 6px 0 12px;
+}
+
+.reaction-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.reaction-btn {
+  background-color: #243447;
+  border: 1px solid transparent;
+  color: var(--color-secondary);
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 0 1px #38444d;
+  font-weight: 500;
+}
+
+.reaction-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.reaction-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: bold;
+  border-color: var(--color-primary);
+}
+
+.reaction-btn.like.active {
+  background-color: var(--color-love);
+}
+.reaction-btn.sad.active {
+  background-color: var(--color-warning);
+}
+.reaction-btn.angry.active {
+  background-color: var(--color-error);
+}
+.reaction-btn.dislike.active {
+  background-color: var(--color-dislike);
+}
+
+.reaction-btn .emoji {
+  font-size: 16px;
+}
+
+.reaction-btn .count {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.comment-form input {
+  flex: 1;
+  background-color: #243447;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  color: var(--color-white);
+  font-size: 14px;
+}
+
+.comment-form button {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.comment-form button:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0 12px;
+    padding: 12px;
+  }
+
+  .reaction-buttons {
+    gap: 6px;
+  }
+
+  .tweet-form {
+    flex-direction: column;
+  }
+
+  .tweet-form input[type="text"] {
+    width: 100%;
+  }
+
+  .reaction-btn {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+.tweet-card {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
